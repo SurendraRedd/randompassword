@@ -22,14 +22,16 @@ st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
 st.image(image, caption='Random Password Generator')
 
-with st.expander("👉 what is this tool❓"):
+with st.expander("👇What is Tool About & How it works❓"):
     st.markdown('**Random Password Generator** to generate secure passwords from characters, \
                 letters, numbers, symbols, and special characters. Random password generator to create \
                 alphanumeric passwords for any kind of login or other uses')
-    st.markdown('- 👉Select the **length** of the password')
-    st.markdown('- 👉**Random password** will be generated based on the length')
+    st.markdown('1.Select the **length** of the password')
+    st.markdown('2.Click on the **Generate** button. Else default password will be available')
+    st.markdown('3.**Random password** will be generated based on the length')
     st.write('\n')
 
+st.write('\n')
 st.write('\n')
 
 # Tooltips also support markdown
@@ -49,11 +51,16 @@ symbols = string.punctuation
 #combine the data
 all = lower + upper + num + symbols
 
-#use random 
-temp1 = random.sample(all,lengthst)
 
-#create the password 
-password1 = "".join(temp1)
+if st.button('Generate'):
+    #use random 
+    temp1 = random.sample(all,lengthst)
+
+    #create the password 
+    password1 = "".join(temp1)
+
+else:
+    password1 = "FrC@Jb"
 
 #print the password
 st.text_area('Random Password',password1,help="Password output")
