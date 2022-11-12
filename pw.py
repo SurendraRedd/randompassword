@@ -1,5 +1,5 @@
 '''
-Random Password Generator using Python
+Random Password Generator using streamlit
 Author: Surendra Reddy
 '''
 
