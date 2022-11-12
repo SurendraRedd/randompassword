@@ -7,14 +7,23 @@ Author: Surendra Reddy
 import streamlit as st
 import random
 import string
+import pyperclip
 
 from PIL import Image
+
+# Page Config details
+st.set_page_config(
+        page_title = 'Password',
+        page_icon = "🔑",
+        layout = "centered",
+        initial_sidebar_state = "expanded")
+    
 
 st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
 st.image(image, caption='Random Password Generator')
 
-with st.expander("👉 Explanation"):
+with st.expander("👉 what is this tool❓"):
     st.markdown('**Random Password Generator** to generate secure passwords from characters, \
                 letters, numbers, symbols, and special characters. Random password generator to create \
                 alphanumeric passwords for any kind of login or other uses')
@@ -22,11 +31,13 @@ with st.expander("👉 Explanation"):
     st.markdown('- 👉**Random password** will be generated based on the length')
     st.write('\n')
 
+st.write('\n')
+
 # Tooltips also support markdown
 input_markdown = '''
-By default max length will be 34 and min length is 0!
+By default max length will be 34 and min length is 6!
 '''.strip()
-lengthst = int(st.number_input('Enter the length of password',5,34,help=input_markdown))
+lengthst = int(st.number_input('Enter the length of password',6,34,help=input_markdown))
                   
 
 #define data
@@ -46,7 +57,10 @@ temp1 = random.sample(all,lengthst)
 password1 = "".join(temp1)
 
 #print the password
-st.text_area('Random Password:',password1)
+st.text_area('Random Password',password1,help="Password output")
+
+
+st.write('\n')
 URL = 'https://surendraredd-randompassword-pw-j36ex4.streamlit.app/'
 with st.expander('Share This Tool'):
-    st.text_area('',URL)
+    st.write(URL)
