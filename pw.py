@@ -26,7 +26,7 @@ with st.expander("👉 Explanation"):
 input_markdown = '''
 By default max length will be 34 and min length is 0!
 '''.strip()
-lengthst = int(st.number_input('Enter the length of password',0,34,help=input_markdown))
+lengthst = int(st.number_input('Enter the length of password',5,34,help=input_markdown))
                   
 
 #define data
@@ -47,6 +47,6 @@ password1 = "".join(temp1)
 
 #print the password
 st.text_area('Random Password:',password1)
-
+URL = 'https://surendraredd-randompassword-pw-j36ex4.streamlit.app/'
 with st.expander('Share This Tool'):
-    st.text_area('',password1)
+    st.text_area('',URL)
