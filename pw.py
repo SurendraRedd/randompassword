@@ -7,7 +7,6 @@ Author: Surendra Reddy
 import streamlit as st
 import random
 import string
-import pyperclip
 
 from PIL import Image
 
