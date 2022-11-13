@@ -20,7 +20,7 @@ st.set_page_config(
 
 st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
-st.image(image, caption='Random Password Generator')
+st.image(image, caption='Random Password Generator',use_column_width='always')
 
 with st.expander("👇What is Tool About & How it works❓"):
     st.markdown('**Random Password Generator** to generate secure passwords from characters, \
@@ -52,7 +52,7 @@ symbols = string.punctuation
 all = lower + upper + num + symbols
 
 
-if st.button('Generate'):
+if st.button('👉Generate'):
     #use random 
     temp1 = random.sample(all,lengthst)
 
@@ -60,13 +60,13 @@ if st.button('Generate'):
     password1 = "".join(temp1)
 
 else:
-    password1 = "FrC@Jb"
+    password1 = ""
 
 #print the password
 st.text_area('Random Password',password1,help="Password output")
 
 
 st.write('\n')
-URL = 'https://surendraredd-randompassword-pw-j36ex4.streamlit.app/'
+URL = 'https://surendraredd-randompassword.streamlit.app/'
 with st.expander('Share This Tool'):
     st.write(URL)
