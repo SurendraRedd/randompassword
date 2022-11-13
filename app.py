@@ -7,6 +7,7 @@ Author: Surendra Reddy
 import streamlit as st
 import random
 import string
+from streamlit_player import st_player
 
 from PIL import Image
 
@@ -22,17 +23,23 @@ st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
 st.image(image, caption='Random Password Generator',use_column_width='always')
 
-with st.expander("👇What is Tool About & How it works❓"):
-    st.markdown('**Random Password Generator** to generate secure passwords from characters, \
-                letters, numbers, symbols, and special characters. Random password generator to create \
-                alphanumeric passwords for any kind of login or other uses')
-    st.markdown('1.Select the **length** of the password')
-    st.markdown('2.Click on the **Generate** button. Else default password will be available')
-    st.markdown('3.**Random password** will be generated based on the length')
-    st.write('\n')
+col1, col2 = st.columns(2)
 
-st.write('\n')
-st.write('\n')
+with col1:
+    with st.expander('Demo'):
+        #st.markdown('[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://surendraredd-randompassword.streamlit.app/))')
+        # Embed a youtube video
+        st_player("https://youtu.be/1VkPi33VQ6I")
+
+with col2:
+    with st.expander("👇What is Tool About & How it works❓"):
+        st.markdown('**Random Password Generator** to generate secure passwords from characters, \
+                    letters, numbers, symbols, and special characters. Random password generator to create \
+                    alphanumeric passwords for any kind of login or other uses')
+        st.markdown('1.Select the **length** of the password')
+        st.markdown('2.Click on the **Generate** button. Else default password will be available')
+        st.markdown('3.**Random password** will be generated based on the length')
+        st.write('\n')
 
 # Tooltips also support markdown
 input_markdown = '''
@@ -67,6 +74,7 @@ st.text_area('Random Password',password1,help="Password output")
 
 
 st.write('\n')
+
 URL = 'https://surendraredd-randompassword.streamlit.app/'
 with st.expander('Share This Tool'):
     st.write(URL)
