@@ -78,3 +78,7 @@ st.write('\n')
 URL = 'https://surendraredd-randompassword.streamlit.app/'
 with st.expander('Share This Tool'):
     st.write(URL)
+    st.markdown(f'''
+            <a href={URL}><button style="background-color:LightBlue;">RandompasswordTool</button></a>
+            ''',
+            unsafe_allow_html=True)
