@@ -183,16 +183,13 @@ if generate_clicked or 'password_result' in st.session_state:
             st.markdown(f'<div class="password-output">{password_result}</div>', unsafe_allow_html=True)
         
         # Copy and additional actions
-        action_col1, action_col2, action_col3 = st.columns(3)
+        action_col1, action_col2 = st.columns(2)
         
         with action_col1:
-            st.code(password_result, language="text")
-        
-        with action_col2:
             if st.button("📋 Copy to Clipboard", use_container_width=True):
                 st.success("✅ Password copied to clipboard!")
         
-        with action_col3:
+        with action_col2:
             if st.button("🔄 Regenerate", use_container_width=True):
                 st.rerun()
 
