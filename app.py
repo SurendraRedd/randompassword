@@ -164,34 +164,45 @@ def generate_password_animated(length, charset):
     password = "".join(temp)
     return password
 
+# Initialize session state for password
+if 'password_result' not in st.session_state:
+    st.session_state.password_result = ""
+
 # Generate Button with animation
 button_col1, button_col2, button_col3 = st.columns([1, 1, 1])
 
 with button_col2:
     generate_clicked = st.button('✨ Generate Password', key='generate_btn', use_container_width=True)
 
-# Display password result
-if generate_clicked or 'password_result' in st.session_state:
+# Generate password on button click
+if generate_clicked:
     charset = build_character_set()
     password_result = generate_password_animated(password_length, charset)
     
     if password_result:
         st.session_state.password_result = password_result
-        
-        # Animated password display
-        with st.container():
-            st.markdown(f'<div class="password-output">{password_result}</div>', unsafe_allow_html=True)
-        
-        # Copy and additional actions
-        action_col1, action_col2 = st.columns(2)
-        
-        with action_col1:
-            if st.button("📋 Copy to Clipboard", use_container_width=True):
-                st.success("✅ Password copied to clipboard!")
-        
-        with action_col2:
-            if st.button("🔄 Regenerate", use_container_width=True):
-                st.rerun()
+
+# Display password result
+if st.session_state.password_result:
+    import html
+    password_result = st.session_state.password_result
+    escaped_password = html.escape(password_result)
+    
+    # Animated password display
+    with st.container():
+        st.markdown(f'<div class="password-output">{escaped_password}</div>', unsafe_allow_html=True)
+    
+    # Copy and additional actions
+    action_col1, action_col2 = st.columns(2)
+    
+    with action_col1:
+        if st.button("📋 Copy to Clipboard", key='copy_btn', use_container_width=True):
+            st.success("✅ Password copied to clipboard!")
+    
+    with action_col2:
+        if st.button("🔄 Regenerate", key='regenerate_btn', use_container_width=True):
+            st.session_state.password_result = ""
+            st.rerun()
 
 st.markdown("---")
 
