@@ -72,11 +72,10 @@ else:
 #print the password
 st.text_area('Random Password',password1,help="Password output")
 st.write('\n')
-URL = 'https://surendraredd-randompassword.streamlit.app/'
+
 with st.expander('🔗 Share This Tool'):
     st.markdown('**Share or access the Random Password Generator tool!**')
-    st.code(URL, help="Click the icon to copy the link.")
-
+    st.code(URL)
     # Native Streamlit button to open the tool in a new tab
     st.markdown(
         f"""<a href="{URL}" target="_blank">
@@ -87,4 +86,3 @@ with st.expander('🔗 Share This Tool'):
         unsafe_allow_html=True
     )
     st.write('Share this link with friends or colleagues to use the tool! 🚀')
-
