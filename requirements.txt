@@ -1,3 +1,3 @@
-streamlit
-streamlit-player
-Pillow
+streamlit>=1.28.0
+streamlit-player>=0.1.5
+Pillow>=10.0.0
