@@ -73,6 +73,8 @@ else:
 st.text_area('Random Password',password1,help="Password output")
 st.write('\n')
 
+
+
 with st.expander('🔗 Share This Tool'):
     st.markdown('**Share or access the Random Password Generator tool!**')
     st.code(URL)
@@ -86,3 +88,4 @@ with st.expander('🔗 Share This Tool'):
         unsafe_allow_html=True
     )
     st.write('Share this link with friends or colleagues to use the tool! 🚀')
+
