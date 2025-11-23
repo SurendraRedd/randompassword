@@ -167,6 +167,8 @@ def generate_password_animated(length, charset):
 # Initialize session state for password
 if 'password_result' not in st.session_state:
     st.session_state.password_result = ""
+if 'regenerate_count' not in st.session_state:
+    st.session_state.regenerate_count = 0
 
 # Generate Button with animation
 button_col1, button_col2, button_col3 = st.columns([1, 1, 1])
@@ -181,6 +183,7 @@ if generate_clicked:
     
     if password_result:
         st.session_state.password_result = password_result
+        st.session_state.regenerate_count = 0
 
 # Display password result
 if st.session_state.password_result:
@@ -192,17 +195,23 @@ if st.session_state.password_result:
     with st.container():
         st.markdown(f'<div class="password-output">{escaped_password}</div>', unsafe_allow_html=True)
     
+    # Text area for easy copying
+    st.text_input("📋 Copy Password:", value=password_result, disabled=True, help="Click to select and copy the password")
+    
     # Copy and additional actions
     action_col1, action_col2 = st.columns(2)
     
     with action_col1:
-        if st.button("📋 Copy to Clipboard", key='copy_btn', use_container_width=True):
-            st.success("✅ Password copied to clipboard!")
+        st.info("✅ Password is ready to copy! Select the text above and use Ctrl+C (or Cmd+C on Mac)")
     
     with action_col2:
-        if st.button("🔄 Regenerate", key='regenerate_btn', use_container_width=True):
-            st.session_state.password_result = ""
-            st.rerun()
+        if st.button("🔄 Regenerate New Password", key=f'regenerate_btn_{st.session_state.regenerate_count}', use_container_width=True):
+            st.session_state.regenerate_count += 1
+            charset = build_character_set()
+            new_password = generate_password_animated(password_length, charset)
+            if new_password:
+                st.session_state.password_result = new_password
+                st.rerun()
 
 st.markdown("---")
 
