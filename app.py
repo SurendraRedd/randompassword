@@ -21,7 +21,7 @@ st.set_page_config(
 
 st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
-st.image(image, caption='Random Password Generator',use_container_width='always')
+st.image(image, caption='Random Password Generator', use_container_width=False, width=300)
 
 col1, col2 = st.columns(2)
 
