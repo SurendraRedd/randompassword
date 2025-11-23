@@ -21,7 +21,7 @@ st.set_page_config(
 
 st.title("🔑 Random Password Generator")
 image = Image.open('password-generator.jpg')
-st.image(image, caption='Random Password Generator',use_column_width='always')
+st.image(image, caption='Random Password Generator',use_container_width='always')
 
 col1, col2 = st.columns(2)
 
@@ -81,4 +81,5 @@ with st.expander('Share This Tool'):
     st.markdown(f'''
             <a href={URL}><button style="background-color:LightBlue;">RandompasswordTool</button></a>
             ''',
+
             unsafe_allow_html=True)
